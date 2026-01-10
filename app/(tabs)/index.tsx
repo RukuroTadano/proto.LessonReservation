@@ -1,98 +1,163 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import NextLessonCard from "@/components/NextLessonCard";
+import WordCard from "@/components/WordCard";
+import React, { useState } from "react";
+import {
+  Image,
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+export default function HomeTab() {
+  // プロトタイプ用に予約の有無を切り替えられるようにします
+  const [hasReservation, setHasReservation] = useState(true);
+  const userName = "Rio";
 
-export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <ScrollView style={styles.container}>
+      {/* 1. Header */}
+      <View style={styles.header}>
+        <Text style={styles.greeting}>Good Morning,</Text>
+        <Text style={styles.userName}>{userName}!</Text>
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require("@/assets/Avatar_sample.jpeg")}
+          style={styles.profileImage}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+      </View>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      {/* 2. Main Card: Next Lesson */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Upcoming Lesson</Text>
+        <NextLessonCard hasReservation={hasReservation} />
+      </View>
+
+      {/* 3. Content Area: Word of the Day */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Word of the Day</Text>
+        <WordCard />
+      </View>
+
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Quick Video Tips</Text>
+          <TouchableOpacity>
+            <Text style={styles.seeAll}>See All</Text>
+          </TouchableOpacity>
+        </View>
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.videoList}
+        >
+          {videoTips.map((video) => (
+            <TouchableOpacity key={video.id} style={styles.videoCard}>
+              <ImageBackground
+                source={{ uri: video.thumbnail }}
+                style={styles.thumbnail}
+                imageStyle={{ borderRadius: 12 }}
+              >
+                <View style={styles.playIconContainer}>
+                  <Text style={styles.playIcon}>▶</Text>
+                </View>
+              </ImageBackground>
+              <Text style={styles.videoTitle} numberOfLines={2}>
+                {video.title}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+
+      {/* 余白用のスペース */}
+      <View style={{ height: 100 }} />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    backgroundColor: "#F2F2F7",
+    marginTop: 50,
+  }, // iOSのシステム背景色に近い色
+
+  // Header
+  header: { paddingHorizontal: 20, paddingTop: 60, marginBottom: 30 },
+  greeting: { fontSize: 18, color: "#8E8E93" },
+  userName: { fontSize: 34, fontWeight: "bold", color: "#000" },
+  profileImage: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    position: "absolute",
+    top: 60,
+    right: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+
+  // Sections
+  section: { paddingHorizontal: 20, marginBottom: 25 },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 12,
+    color: "#1C1C1E",
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  sectionHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  seeAll: { color: "#007AFF", fontWeight: "600" },
+  videoList: { marginLeft: -5 }, // カードの間隔調整
+  videoCard: { width: 160, marginRight: 15 },
+  thumbnail: {
+    width: 160,
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ddd",
+    borderRadius: 12,
+  },
+  playIconContainer: {
+    backgroundColor: "rgba(0,0,0,0.5)",
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  playIcon: { color: "#fff", fontSize: 12, marginLeft: 2 },
+  videoTitle: {
+    marginTop: 8,
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#1C1C1E",
   },
 });
+
+// サンプルデータ
+const videoTips = [
+  {
+    id: "1",
+    title: 'How to use "Get"',
+    thumbnail:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400",
+  },
+  {
+    id: "2",
+    title: "Natural Greetings",
+    thumbnail:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400",
+  },
+  {
+    id: "3",
+    title: "Ordering Coffee",
+    thumbnail:
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400",
+  },
+];
