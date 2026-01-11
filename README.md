@@ -1,8 +1,25 @@
-# Welcome to your Expo app 👋
+# Welcome to Lesson Reservation App 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile application designed for English learners to book and manage their lessons efficiently.
+
+<div align="center">
+  <img src="./assets/Screenshot1.png" width="300px" style="vertical-align: top;">
+  <img src="./assets/Screenshot2.png" width="300px" style="vertical-align: top;">
+</div>
+
+## Overview
+
+This is a prototype version of an English lesson booking system. Please note: As this is a prototype, some features are currently non-functional.
+
+## Key Features
+
+- Lesson Booking: Browse available slots and book your next English lesson.
+
+- My Page: View and manage your current booking status at a glance.
 
 ## Get started
+
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 1. Install dependencies
 

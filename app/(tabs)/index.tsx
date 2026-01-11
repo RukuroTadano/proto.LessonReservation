@@ -14,7 +14,7 @@ import {
 export default function HomeTab() {
   // プロトタイプ用に予約の有無を切り替えられるようにします
   const [hasReservation, setHasReservation] = useState(true);
-  const userName = "Rio";
+  const userName = "Taro";
 
   return (
     <ScrollView style={styles.container}>
