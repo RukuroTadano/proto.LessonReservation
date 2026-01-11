@@ -6,37 +6,31 @@ A mobile application designed for English learners to book and manage their less
   <img src="./assets/Screenshot.png" width="600px">
 </div>
 
-## Overview
+## ✨ Key Features
 
-This is a prototype version of an English lesson booking system.
+- **Lesson Booking**: Browse available dates/times and reserve your next lesson.
+- **My Page**: Check your current booking status and history at a glance.
 
-Please note: As this is a prototype, some features are currently non-functional.
+## 🛠 Tech Stack
 
-## Key Features
+- **Framework**: Expo (React Native)
+- **Language**: TypeScript
 
-- Lesson Booking: Browse available slots and book your next English lesson.
+## 🏃‍♂️ Getting Started
 
-- My Page: View and manage your current booking status at a glance.
+### Prerequisites
 
-## Get started
+- Node.js (LTS version recommended)
+- [Expo Go](https://expo.dev/expo-go) app installed on your mobile device (to preview)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+### Install dependencies
 
-1. Install dependencies
+```bash
+npm install
+```
 
-   ```bash
-   npm install
-   ```
+### Start the app
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+```bash
+npx expo start
+```
