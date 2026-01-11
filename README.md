@@ -3,13 +3,14 @@
 A mobile application designed for English learners to book and manage their lessons efficiently.
 
 <div align="center">
-  <img src="./assets/Screenshot1.png" width="300px" style="vertical-align: top;">
-  <img src="./assets/Screenshot2.png" width="300px" style="vertical-align: top;">
+  <img src="./assets/Screenshot.png" width="300px">
 </div>
 
 ## Overview
 
-This is a prototype version of an English lesson booking system. Please note: As this is a prototype, some features are currently non-functional.
+This is a prototype version of an English lesson booking system.
+
+Please note: As this is a prototype, some features are currently non-functional.
 
 ## Key Features
 
@@ -58,10 +59,3 @@ To learn more about developing your project with Expo, look at the following res
 
 - [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
 - [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
