@@ -3,7 +3,7 @@
 A mobile application designed for English learners to book and manage their lessons efficiently.
 
 <div align="center">
-  <img src="./assets/Screenshot.png" width="300px">
+  <img src="./assets/Screenshot.png" width="600px">
 </div>
 
 ## Overview
